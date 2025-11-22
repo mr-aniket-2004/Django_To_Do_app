@@ -1,22 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
 
+
+{% block external_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock external_css %}
+
+
 {% block content %}
 
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>date</th>
-        </tr>
+<div class="task-box">
+    <h2>My Tasks :</h2>
+    <div class="task_container">
         {% for i in task %}
-            <tr>
-          <td>{{i.title}}</td>
-          <td>{{i.description}}</td>
-          <td>{{i.created_at}}</td>
-            </tr>
+        <ul class="task-row d-flex justify-content-evenly align-items-center m-2 mt-3 border rounded-3">
+            <li class="head ">
+                <div class="main-box">
+                    <p class="title fs-2 fw-bold">
+                        {{i.title}}
+                    </p>
+                    <p class="desc fst-italic">
+                        {{i.description}}
+                    </p>
+                </div>
+            </li>
+
+            <li class="created_date fw-bold fs-5">
+                {{i.created_at}}
+            </li>
+            <li class="status">
+                {% if i.completed %}
+                <button type="button" class="btn btn-success">Completed</button>
+                {% else %}
+                <button type="button" class="btn btn-primary">InProgress</button>
+                {% endif %}
+            </li>
+            <li class="Edit-btn">
+                <button type="button" class="btn btn-warning"><ion-icon name="pencil"></ion-icon> Edit</button>
+            </li>
+            <li class="delete-btn">
+                <button type="button" class="btn btn-danger"><ion-icon name="trash"></ion-icon> Delete </button>
+            </li>
+        </ul>
         {% endfor %}
-    </table>
+
+    </div>
+</div>
 
 {% endblock content %}
-

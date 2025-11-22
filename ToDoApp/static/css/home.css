@@ -1,0 +1,14 @@
+
+.desc{
+    font-size: 15px;
+}
+
+.task-row{
+    background-color: rgba(120, 118, 118, 0.2);
+}
+li{
+    list-style: none;
+}
+.head{
+    min-width: 50%;
+}
