@@ -2,13 +2,49 @@
 {% load static %}
 
 {% block title %}
-    Update Task 
+Update Task
 {% endblock title %}
 {% block external_css %}
 
+<link rel="stylesheet" href="{% static 'css/edit_task.css' %}">
 {% endblock external_css %}
-
 {% block content %}
 
-<h1> Update  Task</h1>
+<h1>Update the Task :</h1>
+<div class="main_container">
+
+    <form action="{% url 'edit_task' task.id %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label fw-3">Task Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="enter the title"
+                name="title" value="{{task.title}}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Task Description</label>
+            <input class="form-control" id="exampleFormControlTextarea1" placeholder="enter the Description"
+                name="Description" value ="{{task.description}}"></input>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="status" id="" {% if task.completed %}
+              checked
+            {% endif %}>
+            <label for="staus"> {% if task.completed %}
+              Completed
+            {% endif %}
+        </label>
+            
+        </div>
+        <div class="btn">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    if (error) {
+        window.alert("{{error}}");
+    }
+</script>
 {% endblock content %}

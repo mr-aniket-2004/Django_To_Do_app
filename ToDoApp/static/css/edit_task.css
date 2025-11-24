@@ -1,0 +1,35 @@
+.main_container {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    min-width: 50%;
+    border: 1PX solid white;
+    background-color: rgba(20, 20, 20, 0.479);
+    padding: 18px;
+    border-radius: 17px;
+}
+
+label {
+    font-weight: 600;
+}
+
+input {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+#exampleFormControlInput1 {
+    background-color: transparent;
+    color: white;
+}
+
+#exampleFormControlTextarea1 {
+    background-color: transparent;
+    color: white;
+}

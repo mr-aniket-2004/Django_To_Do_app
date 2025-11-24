@@ -21,9 +21,32 @@ def add_task(request):
             
     return render(request, "subpages/add_task.html")
 
-def edit_task(request):
-    return render(request, "subpages/edit_task.html")
+def edit_task(request, list_id):
+    task = get_object_or_404(Task, id = list_id)
+    if request.method =="POST":
+        title = request.POST.get("title")
+        description = request.POST.get("Description")
+        status = request.POST.get("status")
+        if title:
+            task.title = title
+            task.description = description
+            task.completed = True if status == "on" else False
+            task.save()
+            return redirect("home")
+        else:
+            error = "Title cannot be Empty"
+            return render(request, "subpages/edit_task.html",{"error":error,"task":task})
+
+    return render(request, "subpages/edit_task.html",{"task":task})
 
 def delete_task(request, list_id):
     task = get_object_or_404(Task, id=list_id)
+    print(task)
     return render(request, "subpages/delete_task.html",{"task":task})
+
+
+def delete_object( request, list_id):
+    task= get_object_or_404(Task, id= list_id)
+    print(task)
+    task.delete()
+    return redirect("home")

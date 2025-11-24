@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    Delete Task 
+Delete Task
 {% endblock title %}
 {% block external_css %}
 <link rel="stylesheet" href="{% static 'css/delete.css' %}">
@@ -10,16 +10,26 @@
 
 {% block content %}
 
-<h1> Delete  Task</h1>
-<table>
-    <tr>
-        <th>Title of Task :</th>
-        <td>{{task.title}}</td>
-    </tr>
-    <tr>
-        <th>Description of Task :</th>
-        <td>{{task.description}}</td>
-    </tr>
-</table>
+<h1> Delete Task</h1>
+<div class="main">
+    <table>
+        <tr>
+            <th>Title of Task :</th>
+            <td>{{task.title}}</td>
+        </tr>
+        <tr>
+            <th>Description of Task :</th>
+            <td>{{task.description}}</td>
+        </tr>
+    </table>
+</div>
+<div class="btns">
+    <a href=" {% url 'delete_object' task.id %}"> 
+        <button type="button" class="btn btn-danger">Delete</button>
+    </a>
+    <a href="{% url 'home' %}"> 
+        <button type="button" class="btn btn-warning">Go Back</button>
+    </a>
+</div>
 
 {% endblock content %}
